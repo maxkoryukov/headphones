@@ -18,7 +18,14 @@ filter:
     excluded_paths:
         - '*/test/*'
         - '/lib/*'
+
 build:
+    dependencies:
+        before:
+            - pip install mock
+            - pip install pyOpenSSL
+            - pip install pylint==1.3.1
+            - pip install coverage
     tests:
         override:
             -
