@@ -1,0 +1,29 @@
+checks:
+    python:
+        code_rating: true
+        duplicate_code: true
+        variables_unused_variable: true
+        variables_unused_import: true
+        variables_unused_argument: true
+        exceptions_raising_non_exception: true
+        exceptions_raising_string: true
+        format_backtick: true
+        classes_no_self_argument: true
+
+tools:
+    pylint:
+        python_version: '2'
+        config_file: pylintrc
+filter:
+    excluded_paths:
+        - '*/test/*'
+        - '/lib/*'
+build:
+    tests:
+        override:
+            -
+                command: nosetests
+                coverage:
+                    file: '.coverage'
+                    # config: '.coveragerc'
+                    format: 'py-cc'
