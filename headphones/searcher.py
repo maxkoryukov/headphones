@@ -561,7 +561,7 @@ def searchNZB(album, new=False, losslessOnly=False, albumlength=None,
                                   headphones.CONFIG.NEWZNAB_ENABLED))
 
         for newznab_host in headphones.CONFIG.get_extra_newznabs():
-            if newznab_host[2] == '1' or newznab_host[2] == 1:
+            if newznab_host[2]:
                 newznab_hosts.append(newznab_host)
 
         if headphones.CONFIG.PREFERRED_QUALITY == 3 or losslessOnly:
@@ -915,10 +915,10 @@ def send_to_downloader(data, bestqual, album):
                     deluge.setSeedRatio({'hash': torrentid, 'ratio': seed_ratio})
 
                 # Set move-to directory
-                if headphones.CONFIG.DELUGE_DONE_DIRECTORY:
+                if headphones.CONFIG.DELUGE_DONE_DIRECTORY or headphones.CONFIG.DOWNLOAD_TORRENT_DIR:
                     deluge.setTorrentPath({'hash': torrentid})
 
-                # I only just realized this function is useless...
+                # Get folder name from Deluge, it's usually the torrent name
                 folder_name = deluge.getTorrentFolder({'hash': torrentid})
                 if folder_name:
                     logger.info('Torrent folder name: %s' % folder_name)
@@ -1201,7 +1201,7 @@ def searchTorrent(album, new=False, losslessOnly=False, albumlength=None,
                                   headphones.CONFIG.TORZNAB_ENABLED))
 
         for torznab_host in headphones.CONFIG.get_extra_torznabs():
-            if torznab_host[2] == '1' or torznab_host[2] == 1:
+            if torznab_host[2]:
                 torznab_hosts.append(torznab_host)
 
         if headphones.CONFIG.PREFERRED_QUALITY == 3 or losslessOnly:
