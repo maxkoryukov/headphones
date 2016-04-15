@@ -411,7 +411,9 @@
         <div ${tooltip_attr} class="input-wrapper">
             <select id="${uiname}" name="${uiname}" size="1" ${'readonly disabled' if me.readonly else ''}>
             % for i in me.items:
-                <option value="${i.value}" ${"selected" if i.value==val else ""}>${i.label}</option>
+                <% item_selected = i.value==val %>
+
+                <option value="${i.value}" ${"selected" if item_selected else ""}>${i.label}</option>
             % endfor
             </select>
 

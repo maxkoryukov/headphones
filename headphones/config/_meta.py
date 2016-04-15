@@ -1,3 +1,4 @@
+import re
 from configobj import ConfigObj
 
 from headphones import logger
@@ -44,16 +45,64 @@ class MetaConfig(object):
 
         logger.debug('Set up meta for [{0}][{1}] = [{2}]'.format(s, k, ','.join(tokens)))
 
+
         for mo in tokens:
+            t = self._parseMetaTokenValue(mo)
 
-            if mo in ['ro', 'readonly']:
+            if t['name'] in ['ro', 'readonly']:
                 option.readonly = True
-            elif mo in ['rw']:
+                # DEBUG
+                #logger.debug('META:::::::: READONLY true')
+            elif t['name'] in ['rw']:
                 option.readonly = False
+                # DEBUG
+                #logger.debug('META:::::::: READONLY false')
 
-            elif mo in ['visible', 'show']:
+            elif t['name'] in ['visible', 'show']:
                 option.visible = True
-            elif mo in ['invisible', 'hide', 'hidden']:
+                # DEBUG
+                #logger.debug('META:::::::: VISIBLE true')
+            elif t['name'] in ['invisible', 'hide', 'hidden']:
                 option.visible = False
+                # DEBUG
+                #logger.debug('META:::::::: VISIBLE false')
+            elif t['name'] in ['items-allow']:
+                if option._items:
+                    for ii in option._items:
+                        if hasattr(ii, 'value'):
+                            # DEBUG
+                            # print 'aaaaaaaaaaaaa******************************************************************'
+                            if str(ii.value) in t['params']:
+                                ii.visible = True
+                            else:
+                                ii.visible = False
+
             else:
-                logger.warn('Unknown value of meta [{0}] for option [{1}][{2}]'.format(mo, s, k))
+                logger.warn('Unknown value of meta [{0}] for option [{1}][{2}]'.format(t['name'], s, k))
+
+    def _parseMetaTokenValue(self, value):
+
+        if not value:
+            logger.warn('config.meta.parse.token: empty value')
+            return None
+
+        r = re.compile('(?P<name>[-\w]+)\s*(?:\((?P<params>[-;\w\d\s]+)\))?')
+        m = r.match(value)
+
+        if not m:
+            logger.warn('config.meta.parse.token: raw-value has syntax error')
+            return None
+
+        t = {}
+        t['name'] = m.groupdict()['name']
+        params = m.groupdict()['params']
+        if params:
+            params = params.split(';')
+            params = map(lambda x: x.strip(), params)
+        else:
+            params = []
+        t['params'] = params
+
+        logger.debug('config.meta.parse.token parsed token: {0}'.format(t))
+
+        return t
