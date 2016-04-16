@@ -433,6 +433,20 @@ def reg(_extend_cb):
 
     # =======================================================================================
     opts.extend([
+        BlockExtension('advanced_http_paths', caption=_("Advanced HTTP"), options=_extend_cb(
+          OptionBool('HTTP_PROXY', 'General', False,
+                     label=_('Behind proxy'),
+                     caption=_('Headphones works behind proxy, and should be careful with generated urls'),
+                     ),
+          OptionString('HTTP_ROOT', 'General', '/',
+                       label=_('HTTP root'),
+                       caption=_('The base part of the URL, without hostname. Just path to home-page of HP.'),
+                       ),
+        )),
+    ])
+
+
+    opts.extend([
         BlockExtension('advanced_forgotten', caption=_("Strange hidden options"), options=_extend_cb(
             MessageExtension(
                 message=_('This is a block of forgotten settings. Previously, they did not have any'
