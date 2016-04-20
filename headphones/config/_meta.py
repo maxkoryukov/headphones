@@ -45,7 +45,6 @@ class MetaConfig(object):
 
         logger.debug('Set up meta for [{0}][{1}] = [{2}]'.format(s, k, ','.join(tokens)))
 
-
         for mo in tokens:
             t = self._parseMetaTokenValue(mo)
 

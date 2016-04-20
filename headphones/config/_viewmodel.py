@@ -683,6 +683,7 @@ class OptionDropdown(OptionBase):
     # def __len__(self):
     #     return len(self._options)
 
+
 class OptionDropdownSelector(OptionDropdown):
     """ Dropbox-selector. On change selected item - appears appropriate block of sub-options
 

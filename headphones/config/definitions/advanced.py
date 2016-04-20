@@ -434,17 +434,30 @@ def reg(_extend_cb):
     # =======================================================================================
     opts.extend([
         BlockExtension('advanced_http_paths', caption=_("Advanced HTTP"), options=_extend_cb(
-          OptionBool('HTTP_PROXY', 'General', False,
-                     label=_('Behind proxy'),
-                     caption=_('Headphones works behind proxy, and should be careful with generated urls'),
-                     ),
-          OptionString('HTTP_ROOT', 'General', '/',
-                       label=_('HTTP root'),
-                       caption=_('The base part of the URL, without hostname. Just path to home-page of HP.'),
-                       ),
+            OptionSwitch('HTTP_PROXY', 'General', False,
+                         label=_('Behind proxy'),
+                         caption=_('Headphones works behind proxy, HP will modify url appropriately'),
+                         options=_extend_cb(
+                             OptionDropdown('HTTP_PROXY_HEADER_HOST', 'General', '', initype=str,
+                                label=_('HTTP header with external hostname'),
+                                tooltip=_('The name of HTTP header, which will be used by'
+                                          ' CherryPy.tool.proxy.local to determine the external proxy name'),
+                                caption=_('For example, Apache uses "X-Forwarded-Host"'),
+                                items=(
+                                    ('', _('Default behaviour')),
+                                    ('X-Forwarded-Host', _('Apache [X-Forwarded-Host]')),
+                                    ('X-Host', _('Lighttpd [X-Host]')),
+                                    ('Host', _('Nginx [Host]')),
+                                )
+                             ),
+                         ),
+            ),
+            OptionString('HTTP_ROOT', 'General', '/',
+                         label=_('HTTP root'),
+                         caption=_('The base part of the URL, without hostname. Just path to home-page of HP.'),
+                         ),
         )),
     ])
-
 
     opts.extend([
         BlockExtension('advanced_forgotten', caption=_("Strange hidden options"), options=_extend_cb(
