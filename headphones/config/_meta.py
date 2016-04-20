@@ -48,29 +48,21 @@ class MetaConfig(object):
         for mo in tokens:
             t = self._parseMetaTokenValue(mo)
 
-            if t['name'] in ['ro', 'readonly']:
+            if not t:
+                logger.warn('Syntax error in meta-option definition, [{0}][{1}] = [{2}]'.format(s, k, mo))
+            elif t['name'] in ['ro', 'readonly']:
                 option.readonly = True
-                # DEBUG
-                #logger.debug('META:::::::: READONLY true')
             elif t['name'] in ['rw']:
                 option.readonly = False
-                # DEBUG
-                #logger.debug('META:::::::: READONLY false')
 
             elif t['name'] in ['visible', 'show']:
                 option.visible = True
-                # DEBUG
-                #logger.debug('META:::::::: VISIBLE true')
             elif t['name'] in ['invisible', 'hide', 'hidden']:
                 option.visible = False
-                # DEBUG
-                #logger.debug('META:::::::: VISIBLE false')
             elif t['name'] in ['items-allow']:
                 if option._items:
                     for ii in option._items:
                         if hasattr(ii, 'value'):
-                            # DEBUG
-                            # print 'aaaaaaaaaaaaa******************************************************************'
                             if str(ii.value) in t['params']:
                                 ii.visible = True
                             else:
