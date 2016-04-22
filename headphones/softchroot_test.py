@@ -77,7 +77,6 @@ class SoftChrootTest(TestCase):
     # APPLY
     #
 
-
     @TestArgs(
         (None),
         (''),
@@ -157,5 +156,3 @@ class SoftChrootTest(TestCase):
         sc = SoftChroot('/tmp/')
         a = sc.revoke(p)
         self.assertEqual(a, e)
-
-
