@@ -18,6 +18,7 @@ class SoftChroot(object):
 
         path = path.strip()
         if not path:
+            #disabled
             return
 
         if (not os.path.exists(path) or
@@ -58,11 +59,11 @@ class SoftChroot(object):
             return path
 
         if not path:
-            return path
+            return self.getRoot()
 
         p = path.strip()
         if not p:
-            return path
+            return self.getRoot()
 
         if os.path.sep == p[0]:
             p = p[1:]
