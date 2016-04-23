@@ -134,6 +134,19 @@ class SoftChrootTest(TestCase):
         self.assertEqual(a, e)
 
     @TestArgs(
+        ('/tmp', '/tmp', '/'),
+        ('/tmp/', '/tmp', '/'),
+    )
+    def test_apply_to_chroot_without_slash(self, chroot_root, path, exp):
+        """ softchroot: apply to the chroot path without trailing slash """
+        sc = SoftChroot(chroot_root)
+        a = sc.apply(path)
+        self.assertEqual(a, exp)
+
+    # ==========================================
+    # REVOKE
+    #
+    @TestArgs(
         (None, '/tmp/'),
         ('', '/tmp/'),
         ('      ', '/tmp/'),
