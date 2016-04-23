@@ -18,7 +18,7 @@ class ConfigTest(TestCase):
 
     def tearDown(self):
         self.driver.close()
-        driver.quit()
+        self.driver.quit()
 
 if __name__ == "__main__":
     driver = DRIVER
