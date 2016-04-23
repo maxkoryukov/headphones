@@ -18,6 +18,7 @@ class ConfigTest(TestCase):
 
     def tearDown(self):
         self.driver.close()
+        driver.quit()
 
 if __name__ == "__main__":
     driver = DRIVER
@@ -25,3 +26,4 @@ if __name__ == "__main__":
     print driver.title
     print "expected:", "Headphones - Settings"
     driver.close()
+    driver.quit()
