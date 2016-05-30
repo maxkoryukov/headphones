@@ -1,9 +1,22 @@
 ##![Headphones Logo](https://github.com/rembo10/headphones/raw/master/data/images/headphoneslogo.png) Headphones
 
-[![Build Status](https://travis-ci.org/rembo10/headphones.svg?branch=master)](https://travis-ci.org/rembo10/headphones)
-[![Build Status](https://img.shields.io/travis/rembo10/headphones/develop.svg?label=develop%20branch%20build)](https://travis-ci.org/rembo10/headphones)
+[![Build Status](https://travis-ci.org/maxkoryukov/headphones.svg?branch=master)](https://travis-ci.org/maxkoryukov/headphones)
+[![Build Status](https://img.shields.io/travis/maxkoryukov/headphones/develop.svg?label=develop%20branch%20build)](https://travis-ci.org/maxkoryukov/headphones)
 
 Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent, Deluge and Blackhole.
+
+## About this fork
+
+**It is strongly recommended to use Headphones from mainstream repo.** Original project is here: https://github.com/rembo10/headphones
+
+This is a developer's fork of Headphones, with some slightful improvements, use it on your own risks.
+
+To enable full support for the fork in the Headphones, do not forget to set correct GIT-settings:
+
+1. Go to `Settings > Advanced Settings > GitHub
+2. Set `GitHub Username` to the name of **owner of the fork**
+
+[Imgur](http://i.imgur.com/AYV5yDq.png?1)
 
 ## Support & Discuss
 You are free to join the Headphones support community on IRC where you can ask questions, hang around and discuss anything related to HP.
@@ -29,7 +42,7 @@ You are free to join the Headphones support community on IRC where you can ask q
 1. Search for similar existing 'issues', feature requests can be recognized by the label 'Request'.
 2. If a similar Request exists, post a comment (+1, or add a new idea to the existing request), otherwise you can create a new one.
 
-If you **comply with these rules** you can [post your request/issue](http://github.com/rembo10/headphones/issues).
+If you **comply with these rules** you can [post your request/issue](http://github.com/maxkoryukov/headphones/issues).
 
 **Support** the project by implementing new features, solving support tickets and provide bug fixes.
 
