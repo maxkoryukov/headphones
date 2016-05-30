@@ -14,9 +14,7 @@ This is a developer's fork of Headphones, with some slightful improvements, use 
 To enable full support for the fork in the Headphones, do not forget to set correct GIT-settings:
 
 1. Go to `Settings > Advanced Settings > GitHub
-2. Set `GitHub Username` to the name of **owner of the fork**
-
-[Imgur](http://i.imgur.com/AYV5yDq.png?1)
+2. Set `GitHub Username` to the name of **owner of the fork**. [See screenshot](http://i.imgur.com/AYV5yDq.png?1)
 
 ## Support & Discuss
 You are free to join the Headphones support community on IRC where you can ask questions, hang around and discuss anything related to HP.
