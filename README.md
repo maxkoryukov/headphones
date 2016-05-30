@@ -9,7 +9,7 @@ Headphones is an automated music downloader for NZB and Torrent, written in Pyth
 
 **It is strongly recommended to use Headphones from mainstream repo.** Original project is here: https://github.com/rembo10/headphones
 
-This is a developer's fork of Headphones, with some slightful improvements, use it on your own risks.
+This is a developer's fork of Headphones, with some slight improvements. **You Use it on your own risks.**
 
 To enable full support for the fork in the Headphones, do not forget to set correct GIT-settings:
 
