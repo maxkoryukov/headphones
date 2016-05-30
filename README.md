@@ -13,7 +13,7 @@ This is a developer's fork of Headphones, with some slightful improvements, use 
 
 To enable full support for the fork in the Headphones, do not forget to set correct GIT-settings:
 
-1. Go to `Settings > Advanced Settings > GitHub
+1. Go to `Settings > Advanced Settings > GitHub`
 2. Set the value of `GitHub Username` to the name of **fork's owner**. [See screenshot](http://i.imgur.com/AYV5yDq.png?1)
 
 ## Support & Discuss
